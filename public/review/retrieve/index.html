@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -31,6 +31,45 @@
         </div>
     </section>
     <script src="../../../auth.js" defer></script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve Review by ID</title>
+    <link href="/main.css" rel="stylesheet" />
+    <link href="/index.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <a href="../../product/">Product</a>
+        <a href="../">Review</a>
+        <a href="../../favourite/">Favourite</a>
+        <a href="../../cart/">Cart</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </header>
+    <section>
+        <div>
+            <h1>Retrieve Review by ID</h1>
+            <form id="retrieve-review-form">
+                <p>
+                    <label for="reviewId">Review ID:</label>
+                    <input type="text" id="reviewId" name="reviewId" />
+                    <button type="submit">Retrieve Review</button>
+                </p>
+            </form>
+            <div id="review-container"></div>
+        </div>
+    </section>
+    <script src="./index.js" defer></script>
+    <script src="../../auth.js" defer></script>
 </body>
 
 </html>

@@ -33,7 +33,7 @@ const getAllReviews = async (req, res) => {
 
 const getReview = async (req, res) => {
     const memberId = res.locals.member_id;
-    const { reviewId } = req.params;
+    const reviewId = req.params.reviewId; // Correctly get reviewId from req.params
 
     try {
         const review = await reviewsModel.getReview(reviewId, memberId);
@@ -65,11 +65,23 @@ const updateReview = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+const deleteReview = async (req, res) => {
+    const memberId = res.locals.member_id;
+    const reviewId = req.params.reviewId;
+
+    try {
+        await reviewsModel.deleteReview(reviewId, memberId);
+        res.status(204).send(); // No content
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
 
 
 module.exports = {
     createReview,
     getAllReviews,
     getReview,
-    updateReview
+    updateReview,
+    deleteReview
 };

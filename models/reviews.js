@@ -29,10 +29,11 @@ const checkCompletedOrder = async (memberId, productId) => {
 const getReview = async (reviewId, memberId) => {
     const sql = 'SELECT * FROM get_review($1, $2)';
     try {
+        console.log(`EXECUTING QUERY | ${sql} [ ${reviewId}, ${memberId} ]`); // Log the query and parameters
         const result = await query(sql, [reviewId, memberId]);
-        return result.rows[0]; // Assuming the query returns a single row
+        return result.rows[0];
     } catch (error) {
-        console.error('Error fetching review:', error); // Log any errors
+        console.error('Error fetching review:', error);
         throw error;
     }
 };
@@ -62,10 +63,17 @@ const updateReview = async (reviewId, memberId, rating, reviewText) => {
     }
 };
 
+const deleteReview = async (reviewId, memberId) => {
+    const sql = 'SELECT delete_review($1, $2)';
+    await query(sql, [reviewId, memberId]);
+};
+
+
 module.exports = {
     createReview,
     checkCompletedOrder,
     getAllReviews,
     getReview,
-    updateReview
+    updateReview,
+    deleteReview
 };

@@ -46,8 +46,28 @@ function fetchUserReviews() {
             });
 
             reviewDiv.querySelector('.delete-button').addEventListener('click', function() {
-                localStorage.setItem("reviewId", review.id);
-                window.location.href = `/review/delete`;
+                if (confirm("Are you sure you want to delete this review?")) {
+                    fetch(`/reviews/${review.id}`, {
+                        method: "DELETE",
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Review deleted successfully!');
+                            fetchUserReviews(); // Refresh the list of reviews
+                        } else {
+                            response.json().then(data => {
+                                alert(`Error deleting review - ${data.error}`);
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting review:', error);
+                        alert('Failed to delete review');
+                    });
+                }
             });
 
             reviewContainerDiv.appendChild(reviewDiv);

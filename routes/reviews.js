@@ -12,5 +12,6 @@ router.post('/create', checkCompletedOrderMiddleware, reviewsController.createRe
 router.get('/', reviewsController.getAllReviews);
 router.get('/:reviewId', reviewsController.getReview);
 router.put('/:reviewId', reviewsController.updateReview); // Add this line
+router.delete('/:reviewId', reviewsController.deleteReview);
 
 module.exports = router;
