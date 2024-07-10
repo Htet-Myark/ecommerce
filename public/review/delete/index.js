@@ -1,39 +1,38 @@
 window.addEventListener('DOMContentLoaded', function () {
-
     const token = localStorage.getItem('token');
     const reviewId = localStorage.getItem('reviewId');
 
+    if (!reviewId) {
+        alert('No review ID found in local storage.');
+        return;
+    }
 
-    const form = document.querySelector('form'); // Only have 1 form in this HTML
+    const form = document.querySelector('#delete-review-form');
     form.querySelector('input[name=reviewId]').value = reviewId;
-    form.onsubmit = function (e) {
-        e.preventDefault(); // prevent using the default submit behavior
 
-        // update review details by reviewId using fetch API with method PUT
+    form.onsubmit = function (e) {
+        e.preventDefault(); // prevent the default form submission
+
         fetch(`/reviews/${reviewId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                rating: rating,
-                reviewText: reviewText
-            }),
+            }
         })
-            .then(function (response) {
-                if (response.ok) {
-                    alert(`Review deleted!`);
-                    
-                } else {
-                    // If fail, show the error message
-                    response.json().then(function (data) {
-                        alert(`Error deleting review - ${data.error}`);
-                    });
-                }
-            })
-            .catch(function (error) {
-                alert(`Error updating review`);
-            });
+        .then(response => {
+            if (response.ok) {
+                alert('Review deleted successfully!');
+                localStorage.removeItem('reviewId');
+                window.location.href = '/review/retrieve/all'; // Redirect to all reviews page
+            } else {
+                response.json().then(data => {
+                    alert(`Error deleting review - ${data.error}`);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting review:', error);
+            alert('Failed to delete review');
+        });
     };
 });
