@@ -34,3 +34,6 @@ module.exports.hashPassword = function (req, res, next) {
     console.log(req.body.password, saltRounds)
     bcrypt.hash(req.body.password, saltRounds, callback);
 };
+
+
+

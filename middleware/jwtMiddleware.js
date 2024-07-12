@@ -84,3 +84,10 @@ module.exports.verifyIsAdmin = function (req, res, next){
     next();
 
 };
+
+module.exports.updateLoginDate = function updateLoginDate(username) {
+    const sql = 'UPDATE member SET last_login_on = CURRENT_TIMESTAMP WHERE username = $1';
+    return query(sql, [username]).then(function (result) {
+        return;
+    });
+};
