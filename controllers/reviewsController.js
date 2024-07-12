@@ -1,21 +1,20 @@
 const reviewsModel = require('../models/reviews');
 
 const createReview = async (req, res) => {
-    const memberId = res.locals.member_id; // Assuming the middleware sets this correctly
-    const { productId, rating, reviewText, saleOrderId } = req.body;
-
-    if (!productId || !rating || !reviewText || !saleOrderId) {
-        return res.status(400).json({ error: 'Product ID, rating, review text, and sale order ID are required.' });
-    }
-    if (rating < 1 || rating > 5) {
-        return res.status(400).json({ error: 'Rating must be between 1 and 5.' });
-    }
+    const { productId, saleOrderId, rating, reviewText } = req.body;
+    const memberId = res.locals.member_id; // Assuming the user's ID is available in the request object
 
     try {
-        const review = await reviewsModel.createReview(memberId, productId, saleOrderId, rating, reviewText);
-        res.status(201).json(review);
+        const result = await reviewsModel.createReview(memberId, productId, saleOrderId, rating, reviewText);
+        res.status(201).json({ message: 'Review added successfully' });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        if (error.message.includes('Review already exists for this product and order')) {
+            res.status(400).json({ error: 'Review already exists for this product and order.' });
+        } else if (error.message.includes('Order not completed or does not exist')) {
+            res.status(400).json({ error: 'Order not completed or does not exist.' });
+        } else {
+            res.status(500).json({ error: 'Failed to add review' });
+        }
     }
 };
 

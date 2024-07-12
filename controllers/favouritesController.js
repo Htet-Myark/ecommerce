@@ -38,14 +38,7 @@ module.exports.getFavorites = async function (req, res) {
 };
 
 
-// module.exports.showPopularity = async function (req, res) {
-//     try {
-//         const favoriteCounts = await favouriteModel.getFavoriteCounts();
-//         res.status(200).json({ favoriteCounts });
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// };
+
 
 
 

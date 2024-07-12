@@ -1,14 +1,17 @@
 const express = require('express');
 const reviewsController = require('../controllers/reviewsController');
-const checkCompletedOrderMiddleware = require('../middleware/checkCompletedOrderMiddleware');
+// const checkCompletedOrderMiddleware = require('../middleware/checkCompletedOrderMiddleware');
 const jwtMiddleware = require('../middleware/jwtMiddleware');
 
 const router = express.Router();
 
 router.use(jwtMiddleware.verifyToken);
 
+router.post('/create', reviewsController.createReview);
+
+
 // Route to create a review with middleware to check completed orders
-router.post('/create', checkCompletedOrderMiddleware, reviewsController.createReview);
+// router.post('/create', checkCompletedOrderMiddleware, reviewsController.createReview);
 router.get('/retrieve/all', reviewsController.getAllReviews);
 router.get('/retrieve/:reviewId', reviewsController.getReview);
 router.put('/:reviewId', reviewsController.updateReview); // Add this line
