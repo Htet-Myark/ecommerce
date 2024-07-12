@@ -1,5 +1,7 @@
 const { query } = require('../database');
 
+
+//
 module.exports.isAdmin = function isAdmin(memberId) {
     const sql = `SELECT * FROM member m JOIN member_role r ON m.role=r.id WHERE m.id = $1 AND role = 2`;
     return query(sql, [memberId])
