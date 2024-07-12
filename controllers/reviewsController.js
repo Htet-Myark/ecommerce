@@ -65,6 +65,7 @@ const updateReview = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
 const deleteReview = async (req, res) => {
     const memberId = res.locals.member_id;
     const reviewId = req.params.reviewId;

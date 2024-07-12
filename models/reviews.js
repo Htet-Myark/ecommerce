@@ -6,7 +6,7 @@ const createReview = async (memberId, productId, saleOrderId, rating, reviewText
         await query(sql, [memberId, productId, saleOrderId, rating, reviewText]);
         return { success: true }; // Adjust based on the response needed
     } catch (error) {
-        if (error.code === 'P0001') { // PostgreSQL custom exception code
+        if (error.code === 'P0001') { 
             throw new Error('Review already exists for this product and order.');
         }
         throw error;

@@ -9,8 +9,8 @@ router.use(jwtMiddleware.verifyToken);
 
 // Route to create a review with middleware to check completed orders
 router.post('/create', checkCompletedOrderMiddleware, reviewsController.createReview);
-router.get('/', reviewsController.getAllReviews);
-router.get('/:reviewId', reviewsController.getReview);
+router.get('/retrieve/all', reviewsController.getAllReviews);
+router.get('/retrieve/:reviewId', reviewsController.getReview);
 router.put('/:reviewId', reviewsController.updateReview); // Add this line
 router.delete('/:reviewId', reviewsController.deleteReview);
 

@@ -23,8 +23,13 @@ module.exports.retrieveByUsername = function retrieveByUsername(username) {
     });
 };
 
-module.exports.retrieveAgeGroupSpending = function retrieveAgeGroupSpending(gender, minTotalSpending, minMemberTotalSpending) {
-
+module.exports.getAgeGroupSpending = function getAgeGroupSpending(gender, minTotalSpending, minMemberTotalSpending) {
+    console.log("Executing SQL with parameters:", { gender, minTotalSpending, minMemberTotalSpending }); // Debugging statement
+    return query('SELECT * FROM get_age_group_spending($1, $2, $3)', [gender, minTotalSpending, minMemberTotalSpending])
+        .then(result => {
+            console.log("SQL result:", result.rows); // Debugging statement
+            return result.rows;
+        });
 };
 
 module.exports.generateCustomerLifetimeValue = function generateCustomerLifetimeValue() {

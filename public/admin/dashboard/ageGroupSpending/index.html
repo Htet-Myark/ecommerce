@@ -1,12 +1,13 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Management</title>
-    <link href="/main.css" rel="stylesheet" />
-    <link href="/index.css" rel="stylesheet" />
-    <script src="./index.js" type="text/javascript"></script>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/index.css" rel="stylesheet">
+    <script src="./index.js" defer></script>
 </head>
-
 <body>
     <header>
         <a href="../">Dashboard</a>
@@ -17,26 +18,25 @@
     <section>
         <h1>Age Group Spending</h1>
         <div>
-            <form class="search">
-
+            <form class="search" id="search-form">
                 <p>
                     <label for="gender">Gender</label>
-                <div>
-                    <input type="radio" name="gender" id="male" value="M" />
-                    <label for="male">Male</label>
-                </div>
-                <div>
-                    <input type="radio" name="gender" id="female" value="F" />
-                    <label for="female">Female</label>
-                </div>
+                    <div>
+                        <input type="radio" name="gender" id="male" value="M">
+                        <label for="male">Male</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" id="female" value="F">
+                        <label for="female">Female</label>
+                    </div>
                 </p>
                 <p>
                     <label for="minTotalSpending">Min Total Spending</label>
-                    <input type="number" name="minTotalSpending" id="minTotalSpending" />
+                    <input type="number" name="minTotalSpending" id="minTotalSpending">
                 </p>
                 <p>
                     <label for="minMemberTotalSpending">Min Member Total Spending</label>
-                    <input type="number" name="minMemberTotalSpending" id="minMemberTotalSpending" />
+                    <input type="number" name="minMemberTotalSpending" id="minMemberTotalSpending">
                 </p>
                 <button type="submit">Search</button>
             </form>
@@ -55,5 +55,4 @@
     </section>
     <script src="../../authAdmin.js" type="text/javascript"></script>
 </body>
-
 </html>

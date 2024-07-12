@@ -4,6 +4,7 @@ const createHttpError = require('http-errors');
 const authRoute = require('./routes/auth');
 const productsRoute = require('./routes/products');
 const reviewsRoute = require('./routes/reviews');
+const favouritesRoute = require('./routes/favourites');
 const saleOrdersRoute = require('./routes/saleOrders');
 const cartsRoute = require('./routes/carts');
 const dashboardRoute = require('./routes/dashboard');
@@ -24,6 +25,7 @@ app.use(express.static('public'));
 
 app.use('/auth', authRoute);
 app.use('/reviews', reviewsRoute);
+app.use('/favourites', favouritesRoute);
 app.use('/products', productsRoute);
 app.use('/saleOrders', saleOrdersRoute);
 app.use('/carts', cartsRoute);

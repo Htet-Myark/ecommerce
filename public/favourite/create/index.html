@@ -1,13 +1,13 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favourite Management | Create New Favourite</title>
     <link href="/main.css" rel="stylesheet" />
-
     <link href="./index.css" rel="stylesheet" />
     <script src="./index.js" type="text/javascript"></script>
 </head>
-
 <body>
     <header>
         <a href="../../product/">Product</a>
@@ -18,11 +18,15 @@
     </header>
     <section>
         <div id="review-product-main">
-            <h1>Add To Favourite</span></h1>
-
+            <h1>Add To Favourite</h1>
+            <form id="add-favorite-form">
+                <input type="hidden" id="product-id" name="productId">
+                <label for="remarks">Remarks:</label>
+                <input type="text" id="remarks" name="remarks" required>
+                <button type="submit">Add to Favourite</button>
+            </form>
         </div>
     </section>
     <script src="../../auth.js" type="text/javascript"></script>
 </body>
-
 </html>

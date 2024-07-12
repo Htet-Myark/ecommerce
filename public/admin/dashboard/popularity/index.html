@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popularity of Items</title>
+    <link href="/main.css" rel="stylesheet">
+    <link href="/index.css" rel="stylesheet">
+    <script src="./index.js" defer></script>
+    <!-- <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section {
+            width: 100%;
+            max-width: 1200px; /* Optional: To limit the maximum width */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #popularity-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #popularity-table {
+            width: 100%;
+            max-width: 800px; /* Optional: To limit the maximum width of the table */
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        #popularity-table th, #popularity-table td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header {
+            width: 100%;
+            background: #f8f8f8;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        header a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+    </style> -->
+</head>
+<body style="background-color: rgb(186, 234, 244);">
+    <header>
+        <a href="../">Dashboard</a>
+        <a href="../../saleOrder/">Sale Order</a>
+        <a href="../../supplier/">Supplier</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </header>
+    <section id="popularity-section" >
+        <h2>Popularity of Items</h2>
+        <table id="popularity-table" border="1">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Popularity</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+    <script src="../../authAdmin.js" type="text/javascript"></script>
+    
+</body>
+</html>

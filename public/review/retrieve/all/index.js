@@ -88,7 +88,7 @@
 function fetchUserReviews() {
     const token = localStorage.getItem("token");
 
-    return fetch(`/reviews`, {
+    return fetch(`/reviews/retrieve/all`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

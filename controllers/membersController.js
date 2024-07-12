@@ -25,8 +25,20 @@ module.exports.login = function (req, res, next) {
 }
 
 module.exports.retrieveAgeGroupSpending = function (req, res) {
+    const { gender, minTotalSpending, minMemberTotalSpending } = req.query;
 
-}
+    console.log("Retrieving age group spending with params:", { gender, minTotalSpending, minMemberTotalSpending }); // Debugging log
+
+    memberModel.getAgeGroupSpending(gender, minTotalSpending, minMemberTotalSpending)
+        .then(function (ageGroupSpending) {
+            console.log("Retrieved age group spending:", ageGroupSpending); // Debugging log
+            res.status(200).json({ ageGroupSpending });
+        })
+        .catch(function (error) {
+            console.error("Error retrieving age group spending:", error); // Debugging log
+            res.status(500).json({ message: error.message });
+        });
+};
 
 module.exports.generateCustomerLifetimeValue = function (req, res) {
     return memberModel.generateCustomerLifetimeValue()

@@ -2,10 +2,16 @@ window.addEventListener('DOMContentLoaded', function () {
     const token = localStorage.getItem('token');
     const reviewId = localStorage.getItem('reviewId');
 
+
+    
+
     if (!reviewId) {
         alert('No review ID found in local storage.');
         return;
     }
+
+    const form = document.querySelector('#update-review-form');
+    form.querySelector('input[name=reviewId]').value = reviewId;
 
     // Fetch the existing review details
     fetch(`/reviews/${reviewId}`, {
@@ -21,7 +27,9 @@ window.addEventListener('DOMContentLoaded', function () {
         const review = body.review;
 
         // Set the form fields with the existing review data
-        document.querySelector('input[name="reviewId"]').value = review.id;
+        const form = document.querySelector('#update-review-form');
+    form.querySelector('input[name=reviewId]').value = reviewId;
+        // document.querySelector('input[name="reviewId"]').value = review.id;
         document.querySelector('select[name="rating"]').value = review.rating;
         document.querySelector('textarea[name="reviewText"]').value = review.review_text;
     })
@@ -30,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     // Handle form submission
-    const form = document.querySelector('form');
+    // const form = document.querySelector('form');
     form.onsubmit = function (e) {
         e.preventDefault(); // prevent the default form submission
 
